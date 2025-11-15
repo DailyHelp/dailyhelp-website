@@ -10,7 +10,7 @@ export default function HowToPreview() {
     <section className="py-15">
         <Container className="space-y-10 sm:space-y-15 max-sm:px-6">
             <main className="text-center space-y-4">
-                <h2 className="text-3xl font-bold">
+                <h2 className="text-3xl max-md:text-2xl font-bold">
                     We Make Life Easier
                 </h2>
                 <p className="text-sm text-[#757C91] sm:font-semibold leading-5">
@@ -18,7 +18,7 @@ export default function HowToPreview() {
                 </p>
             </main>
 
-            <main className="sm:flex space-y-6 justify-between">
+            <main className="grid md:grid-cols-2 mx-auto w-fit gap-6 justify-between">
                 <Card className="bg-[#F9F9FB] px-4 py-5 sm:px-8 sm:py-10">
                    <h2 className="text-lg text-[#121921] font-bold pb-8">
                         Need a plumber? A makeup artist? A tutor?

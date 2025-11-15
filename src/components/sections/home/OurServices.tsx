@@ -16,7 +16,7 @@ export default function Hero() {
                 </p>
             </main>
 
-            <main className="sm:h-[30rem] grid sm:grid-cols-4 sm:grid-rows-2 grid-rows-1 gap-2">
+            <main className="sm:h-[30rem] grid sm:grid-cols-4 sm:max-lg:grid-cols-3 sm:grid-rows-2 grid-rows-1 gap-2">
 
                 <Card className="relative  pt-6 max-sm:h-[18rem] w-full bg-[#D6DBE7] sm:bg-[#F1F2F4] overflow-hidden">
                     {/* Background Image */}
@@ -65,13 +65,14 @@ export default function Hero() {
                     </div>
                 </Card>
 
-                <Card className="relative flex flex-col max-sm:h-[20rem] justify-between lg:row-span-2 px-6 py-10 w-full bg-[#F1F2F4] overflow-hidden">
-                    <h2 className="text-3xl font-bold">
+                <Card className="relative flex flex-col max-sm:h-[20rem] justify-between lg:row-span-2 lg:px-6 px-2 py-10 w-full bg-[#F1F2F4] overflow-hidden">
+                    <h2 className="lg:text-3xl text-xl font-bold">
                         If <span className="text-[#95D21A] italic">You</span> need it done, you’ll find it here.
                     </h2>
 
                     <div className="my-5">
-                        <div className="rounded-xl w-fit p-[6px] bg-[#FFFFFF33] border border-white">
+                       
+                        <div className="max-sm:block max-lg:hidden rounded-xl w-fit p-[6px] bg-[#FFFFFF33] border border-white">
                         <Image
                             src="/icons/QRCode.svg"
                             alt="Menu"
@@ -101,14 +102,17 @@ export default function Hero() {
                         </div>
 
                         {/* ⭐ Star image at bottom right */}
-                        <div className="absolute bottom-0 right-0">
-                        <Image
-                            src="/images/star.png"
-                            alt="Star"
-                            width={120}
-                            height={10}
-                        />
-                        </div>
+        <div className="sm:max-xl:hidden absolute bottom-0 right-0 z-0">
+    <Image
+        src="/images/star.png"
+        alt="Star"
+        width={120}
+        height={10}
+        className="pointer-events-none select-none"
+    />
+</div>
+
+
                     </div>
                 </Card>
 

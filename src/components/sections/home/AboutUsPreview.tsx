@@ -8,11 +8,11 @@ export default function AboutUsPreview() {
     <section className="py-15">
       <Container className="sm:space-y-16 space-y-14 max-sm:px-6">
         {/* Header */}
-        <div className="sm:flex justify-between items-start max-sm:space-y-4">
+        <div className="grid md:grid-cols-2  items-start max-md:space-y-4">
           <h2 className="text-3xl font-bold text-[#121921]">
             Your easiest way to get <br /> things done.
           </h2>
-          <p className="sm:w-[40%] text-sm text-[#757C91] sm:font-semibold leading-6">
+          <p className=" text-sm text-[#757C91] md:font-semibold leading-6">
             We know how hard it can be to find the right person for the job.
             With DailyHelp, you skip the endless searching, guessing, and worrying.
             We connect you with the right people, fast, safe, and simple.
@@ -20,9 +20,9 @@ export default function AboutUsPreview() {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 sm:gap-60 gap-8 items-center">
+        <div className="grid md:grid-cols-2 sm:gap-16 gap-8 items-center">
           {/* Left side: features list */}
-          <div className="space-y-12 max-sm:hidden ">
+          <div className="space-y-12 max-md:hidden ">
             {[
               {
                 icon: "/icons/power.svg",
@@ -70,13 +70,13 @@ export default function AboutUsPreview() {
                 src="/images/hire.png"
                 alt="Hire Preview"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center sm:max-md:object-top"
                 />
             </div>
         </Card>
 
         {/* Left side: features list */}
-          <div className="space-y-12 sm:hidden">
+          <div className="space-y-12 md:hidden">
             {[
               {
                 icon: "/icons/power.svg",
@@ -111,7 +111,7 @@ export default function AboutUsPreview() {
         </div>
 
           {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 sm:gap-60 gap-8 items-center">
+        <div className="grid md:grid-cols-2 sm:gap-16 gap-8 items-center">
          
           {/* Right side: phone preview */}
         <Card className="relative pt-6  h-[32rem] w-full bg-[#F6F7F8] items-center overflow-hidden">
@@ -128,7 +128,7 @@ export default function AboutUsPreview() {
                 src="/images/gethired.png"
                 alt="Hire Preview"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center sm:max-md:object-top"
                 />
             </div>
         </Card>

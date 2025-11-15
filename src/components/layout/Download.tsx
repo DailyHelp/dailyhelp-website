@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
                 Download the DailyHelp app
             </p>
 
-            <div className="flex items-center rounded-2xl px-20 py-5 max-md:bg-[#017441]">
+            <div className="flex items-center rounded-2xl sm:px-20 px-10 py-5 mx-3 max-md:bg-[#017441]">
                 <div className="border-[#D6DBE7] border-r-1 px-2">
                     <Image
                         src="/icons/playstore.svg"
