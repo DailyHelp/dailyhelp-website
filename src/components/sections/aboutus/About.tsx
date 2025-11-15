@@ -7,7 +7,7 @@ export default function About() {
     <section className="sm:pt-30 pt-10">
         <Container className="flex flex-col items-center space-y-10 w-fit mx-auto">
           <div>
-            <div className="grid sm:grid-cols-2 max-sm:gap-4">
+            <div className="grid lg:grid-cols-2 max-sm:gap-4">
             <h2 className="text-4xl font-bold text-[#121921]">
                 Mission & What DailyHelp  Offers          
             </h2>

@@ -37,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
       {isOpen && (
         <div
-          className={`absolute mt-2 lg:w-[102rem] w-[] bg-white border 
+          className={`absolute mt-2  w-[95vw] bg-white border 
             border-gray-200 rounded-md shadow-lg z-50 right-0 `}
         >
           <div className="py-1 ">{children}</div>

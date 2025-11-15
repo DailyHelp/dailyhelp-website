@@ -43,15 +43,15 @@ const Footer: React.FC = () => {
                
         </div>
 
-        <div className="sm:flex flex-wrap md:flex-nowrap mx-[-.8rem] mt-4 md:mt-0  font-semibold text-[#3B4152] space-y-3">
-          <Link href="/about" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">About us</Link>
-          <Link href="/how-it-works" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">How DailyHelp Works</Link>
-          <Link href="/founders-corners" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Founders Corner</Link>
-          <Link href="/ethics-guide" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Business Ethics & Compliance Guide</Link>
-          <Link href="/faqs" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQ et Contacts</Link>
+        <div className="sm:flex lg:gap-8 px-4 gap-6 max-lg:text-sm flex-wrap md:flex-nowrap mx-[-.8rem] mt-4 md:mt-0  font-semibold text-[#3B4152] space-y-3">
+          <Link href="/about" className="block  py-2 text-gray-700 hover:text-[#656974FF]">About us</Link>
+          <Link href="/how-it-works" className="block py-2 text-gray-700 hover:text-[#656974FF]">How DailyHelp Works</Link>
+          <Link href="/founders-corners" className="block py-2 text-gray-700 hover:text-[#656974FF]">Founders Corner</Link>
+          <Link href="/ethics-guide" className="block  py-2 text-gray-700 hover:text-[#656974FF]">Business Ethics & Compliance Guide</Link>
+          <Link href="/faqs" className="block  py-2 text-gray-700 hover:text-[#656974FF]">FAQ et Contacts</Link>
         </div>
 
-        <div style={{ gap: '10px', fontSize: '24px' }} className="mx-1 mt-6 flex items-center">
+        <div style={{ gap: '10px', fontSize: '24px' }} className="sm:hidden mx-1 mt-6 flex items-center">
          
           <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
             <FaInstagram color="#FE0077" className="w-[20px]"/>

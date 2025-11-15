@@ -4,10 +4,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="sm:py-20 py-6">
-        <div className="max-w-4xl flex flex-col max-sm:mx-4 sm:space-y-10 space-y-6 w-fit mx-auto">
+    <section className="xl:py-20 py-3">
+        <div className="max-w-4xl max-lg:mx-10 flex flex-col max-sm:mx-4  sm:space-y-10 space-y-6 w-fit mx-auto">
             <div>
-                <h2 className="sm:text-5xl text-2xl text-left text-[#121921] font-bold">Ethics & Compliance Guide </h2>
+                <h2 className="md:text-5xl sm:max-md:text-3xl text-2xl text-center text-[#121921] font-bold">Ethics & Compliance Guide </h2>
             </div> 
 
             <div className="">

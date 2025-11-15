@@ -6,14 +6,14 @@ import { Container } from "@/components/ui";
 export default function HowTo() {
   return (
     <section className="sm:pt-20 pt-8 pb-16">
-        <Container className="grid sm:grid-cols-2 max-sm:gap-8 items-center  mx-auto">
+        <Container className="grid md:grid-cols-2 max-lg:gap-8 items-center  mx-auto">
              <div className="">
                 <Image
                     src="/images/aboutimg.jpg"
                     alt="Menu"
                     width={400}
                     height={40}
-                    className="object-contain rounded-2xl"
+                    className="object-contain rounded-2xl md:max-lg:w-[20rem]"
                 />
             </div> 
 
@@ -45,7 +45,7 @@ export default function HowTo() {
             ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-8">
                     <div className="bg-[#F3FCF4] p-3 rounded-full shadow-sm">
-                        <Image src={item.icon} alt={item.title} width={30} height={20} />
+                        <Image src={item.icon} alt={item.title} width={20} height={20} />
                     </div>
                     <div>                       
                         <p className="text-[15px] font-bold text-[#121921]">{item.title} <span className=" text-[#757C91] leading-5 font-normal">{item.desc}</span></p>

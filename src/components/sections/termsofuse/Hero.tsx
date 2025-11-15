@@ -3,10 +3,10 @@
 
 export default function Hero() {
   return (
-    <section className="sm:py-20">
-        <div className="max-w-4xl flex flex-col max-sm:px-4 sm:space-y-10 space-y-3 w-fit mx-auto">
+    <section className="xl:py-20">
+        <div className="max-w-4xl max-lg:mx-10 flex flex-col max-sm:mx-4  sm:space-y-10 space-y-6 w-fit mx-auto">
             <div className="">
-                <h2 className="sm:text-4xl text-3xl text-[#121921] font-bold">Terms of Use </h2>
+                <h2 className="sm:text-4xl text-3xl text-center text-[#121921] font-bold">Terms of Use </h2>
             </div> 
 
             <div className=" text-[#3B4152] leading-8 space-y-1">

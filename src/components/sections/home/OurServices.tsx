@@ -16,7 +16,7 @@ export default function Hero() {
                 </p>
             </main>
 
-            <main className="lg:h-[30rem] grid sm:grid-cols-4 sm:grid-rows-2 grid-rows-1 gap-2">
+            <main className="sm:h-[30rem] grid sm:grid-cols-4 sm:grid-rows-2 grid-rows-1 gap-2">
 
                 <Card className="relative  pt-6 max-sm:h-[18rem] w-full bg-[#D6DBE7] sm:bg-[#F1F2F4] overflow-hidden">
                     {/* Background Image */}

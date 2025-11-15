@@ -5,12 +5,12 @@ import Image from "next/image";
 import { FaApple } from "react-icons/fa";
 
 
-export default function Hero() {
+export default function AboutUs() {
   return (
     <section className="py-6">
-        <Container className="sm:flex bg-[#CCFFE8] sm:rounded-2xl rounded-3xl max-sm:mx-3 sm:pt-12 pt-4 sm:pb-2">
-            <div className=" sm:space-y-6 space-y-3 sm:w-[60%]">
-                <h2 className="sm:text-6xl text-2xl sm:font-semibold font-extrabold">
+        <Container className="md:flex bg-[#CCFFE8] sm:rounded-2xl rounded-3xl max-sm:mx-3 sm:mx-6 lg:pt-12 pt-4 sm:pb-2">
+            <div className=" lg:space-y-6 space-y-3 sm:w-[60%]">
+                <h2 className="lg:text-6xl text-3xl sm:font-semibold font-extrabold">
                     For people looking for help
                 </h2>
                 <p className=" text-[#3B4152] leading-7">
@@ -19,26 +19,28 @@ export default function Hero() {
                 <p className=" text-[#3B4152] leading-7">
                     Download, register and use.
                 </p>
-            <div className="sm:hidden mt-13 flex items-center rounded-2xl px-10 py-5 max-sm:bg-[#017441]">
-                <div className="border-[#D6DBE7] border-r-1 px-2">
+            <div className="lg:hidden max-sm:mt-13 flex justify-center items-center rounded-2xl px-10 max-sm:py-5 py-4 sm:w-fit max-lg:bg-[#017441]">
+                <div className="flex items-center">
+                    <div className="border-[#D6DBE7] border-r-1 px-2">
                     <Image
                         src="/icons/playstore.svg"
                         alt="Menu"
                         width={15}
                         height={15}
-                        className=""
+                        className="max-sm:w-6"
                     />
                 </div>
 
                 <div className="px-2">                  
-                    <FaApple className="text-white sm:text-black text-xl" />
-
+                    <FaApple className="text-white lg:text-black text-xl" />
                 </div>
-                
-                <p className="sm:hidden text-white font-bold ">Download the app</p>
+                </div>
+
+                <p className="lg:hidden text-xs text-white font-bold">Download the app</p>
             </div>
 
-            <div className="max-sm:hidden  rounded-xl p-4 w-fit shadow-[0px_5px_10px_#9EA7AA8B]">
+
+            <div className="max-lg:hidden  rounded-xl p-4 w-fit shadow-[0px_5px_10px_#9EA7AA8B]">
                 <Image
                     src="/icons/vector.svg"
                     alt="Menu"
@@ -55,7 +57,7 @@ export default function Hero() {
                     alt="Hire Preview"
                     width={600}
                     height={20}
-                    className="object-cover scale-x-[-1]"
+                    className="object-cover scale-x-[-1] sm:max-lg:ml-auto sm:max-lg:w-[30rem]"
                     />
                 </div>               
             </div>

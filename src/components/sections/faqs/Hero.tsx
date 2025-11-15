@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "Do I need to pay to join DailyHelp as a service provider?",
     answer:
-      "No, signing up is free. However, a small service fee may be deducted from completed jobs.",
+      "No, signing up is free. However, a mdall service fee may be deducted from completed jobs.",
   },
     {
     question: "How do I get paid for my services?",
@@ -64,10 +64,10 @@ export default function FAQSection() {
     setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <div className=" max-w-2xl sm:space-y-10 space-y-2 sm:py-20 py-8 max-sm:mx-4 mx-auto">
+    <div className=" max-w-2xl md:space-y-10 space-y-2 md:py-20 py-8 max-md:mx-4 mx-auto">
 
         <div>
-            <h2 className="sm:text-5xl text-3xl text-center text-[#121921] font-semibold">Frequently Asked Questions</h2>
+            <h2 className="md:text-5xl text-3xl text-center text-[#121921] font-semibold">Frequently Asked Questions</h2>
         </div> 
 
         <div className="divide-y divide-gray-200">

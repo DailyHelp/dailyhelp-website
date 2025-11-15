@@ -2,7 +2,6 @@
 "use client";
 import Image from "next/image";
 import { FaApple } from "react-icons/fa";
-import { IoTriangle } from "react-icons/io5";
 
 export default function Hero() {
   return (
@@ -31,11 +30,12 @@ export default function Hero() {
             <p className="max-sm:hidden text-[#757C91] text-sm font-bold mt-6">
                 Scan the QR code to download the DailyHelp app
             </p>
+
             <p className="sm:hidden text-[#A9AFC2] font-semibold">
                 Download the DailyHelp app
             </p>
 
-            <div className="flex items-center rounded-2xl px-20 py-5 max-sm:bg-[#017441]">
+            <div className="flex items-center mx-2 rounded-2xl md:px-20 px-10 py-5 max-sm:bg-[#017441]">
                 <div className="border-[#D6DBE7] border-r-1 px-2">
                     <Image
                         src="/icons/playstore.svg"

@@ -22,16 +22,16 @@ export default function ProfessionGallery() {
   return (
     <section className=" sm:py-15 py-0">
       <Container >
-        <div className=" grid gap-2 grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 ">
+        <div className=" grid gap-2 grid-cols-3  sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 ">
           {professions.map((profession, index) => (
-          <Card key={profession.title} className={`bg-[#ECECEFFF] relative overflow-hidden max-sm:rounded-md ${index === 9 ? " max-sm:hidden" : ""}`}>
-            <div className="max-sm:hidden p-3 text-center relative">
+          <Card key={profession.title} className={`bg-[#ECECEFFF] relative overflow-hidden max-sm:rounded-md ${index === 9 ? " max-lg:hidden" : ""}`}>
+            <div className="max-md:hidden p-3 text-center relative">
               <h3 className="font-semibold text-xs text-[#6A6F81FF]">
                 {profession.title}
               </h3>
             </div>
 
-            <div className="relative sm:h-60 h-30 pt-10 w-full">
+            <div className="relative md:h-40 h-60 max-sm:h-30 pt-10 w-full">
               <Image
                 src={profession.image}
                 alt={profession.title}
@@ -39,13 +39,16 @@ export default function ProfessionGallery() {
                 className={cn(
                   "object-cover scale-x-[-1]",
                   index === 1 && "object-left ",
+                  index === 3 && "object-top",
                   index === 5 && "object-right scale-x-[1]",
- 
+                  index === 7 && "object-top ",
+                  index === 8 && "object-top ",
+
                 )}
               />
             </div>
 
-            <div className="p-1 text-center relative">
+            <div className="md:hidden p-1 text-center relative">
               <h3 className="font-semibold text-xs text-[#6A6F81FF]">
                 {profession.title}
               </h3>
