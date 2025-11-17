@@ -31,7 +31,7 @@ export default function ProfessionGallery() {
               </h3>
             </div>
 
-            <div className="relative md:h-40 h-60 max-sm:h-30 pt-10 w-full">
+            <div className="relative md:h-40 xl:h-60 max-sm:h-30 pt-10 w-full">
               <Image
                 src={profession.image}
                 alt={profession.title}
