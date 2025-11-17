@@ -43,6 +43,8 @@ export default function ProfessionGallery() {
                   index === 5 && "object-right scale-x-[1]",
                   index === 7 && "object-top ",
                   index === 8 && "object-top ",
+                  index === 9 && "object-top ",
+
 
                 )}
               />
