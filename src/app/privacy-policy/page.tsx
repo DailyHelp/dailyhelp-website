@@ -2,6 +2,11 @@
 
 import { Hero } from "@/components/sections/privacypolicy";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - DailyHelp",
+};
 
 export default function EthicsGuide() {
   return (

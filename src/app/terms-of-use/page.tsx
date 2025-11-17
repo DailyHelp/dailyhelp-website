@@ -2,6 +2,11 @@
 
 import { Hero } from "@/components/sections/termsofuse";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Use - DailyHelp",
+};
 
 
 export default function TermsofUse() {

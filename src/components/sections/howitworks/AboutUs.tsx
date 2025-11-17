@@ -8,7 +8,7 @@ import { FaApple } from "react-icons/fa";
 export default function AboutUs() {
   return (
     <section className="py-6">
-        <Container className="md:flex bg-[#CCFFE8] sm:rounded-2xl rounded-3xl max-sm:mx-3 sm:mx-6 lg:pt-12 pt-4 sm:pb-2">
+        <Container className="md:flex bg-[#CCFFE8] sm:rounded-2xl rounded-3xl max-sm:mx-3 sm:max-xl:mx-6 lg:pt-12 pt-4 sm:pb-2">
             <div className=" lg:space-y-6 space-y-3 sm:w-[60%]">
                 <h2 className="lg:text-6xl text-3xl sm:font-semibold font-extrabold">
                     For people looking for help
