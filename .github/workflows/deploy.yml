@@ -11,6 +11,7 @@ env:
   APP_DIR: /var/www/dailyhelp
   APP_NAME: dailyhelp
   ARCHIVE_NAME: dailyhelp-${{ github.sha }}.tgz
+  RELEASE_NAME: release-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
 
 jobs:
   test:
@@ -74,7 +75,7 @@ jobs:
             APP_DIR="${{ env.APP_DIR }}"
             RELEASES_DIR="${APP_DIR}/releases"
             SHARED_DIR="${APP_DIR}/shared"
-            RELEASE="${RELEASES_DIR}/${{ github.sha }}"
+            RELEASE="${RELEASES_DIR}/${{ env.RELEASE_NAME }}"
             ARCHIVE="/tmp/${{ env.ARCHIVE_NAME }}"
 
             mkdir -p "${RELEASES_DIR}" "${SHARED_DIR}"
@@ -98,4 +99,12 @@ jobs:
             pm2 startOrReload ecosystem.config.js --env production
             pm2 save --force
 
-            find "${RELEASES_DIR}" -maxdepth 1 -mindepth 1 -type d | sort | head -n -3 | xargs -r rm -rf
+            CURRENT="$(readlink -f "${APP_DIR}/current" || true)"
+            find "${RELEASES_DIR}" -maxdepth 1 -mindepth 1 -type d -printf '%T@ %p\n' \
+              | sort -n \
+              | head -n -3 \
+              | awk '{ $1=""; sub(/^ /,""); print }' \
+              | while read -r dir; do
+                  [ "${dir}" = "${CURRENT}" ] && continue
+                  rm -rf "${dir}"
+                done
