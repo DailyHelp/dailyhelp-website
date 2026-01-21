@@ -88,7 +88,8 @@ jobs:
             fi
 
             cd "${RELEASE}"
-            npm ci
+            export npm_config_production=false
+            npm ci --include=dev
             npm run build
 
             ln -sfn "${RELEASE}" "${APP_DIR}/current"
