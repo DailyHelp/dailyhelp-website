@@ -48,7 +48,8 @@ const Footer: React.FC = () => {
           <Link href="/how-it-works" className="block py-2 text-gray-700 hover:text-[#656974FF]">How DailyHelp Works</Link>
           <Link href="/founders-corners" className="block py-2 text-gray-700 hover:text-[#656974FF]">Founders Corner</Link>
           <Link href="/ethics-guide" className="block  py-2 text-gray-700 hover:text-[#656974FF]">Business Ethics & Compliance Guide</Link>
-          <Link href="/faqs" className="block  py-2 text-gray-700 hover:text-[#656974FF]">FAQ et Contacts</Link>
+          <Link href="/faqs" className="block  py-2 text-gray-700 hover:text-[#656974FF]">FAQs</Link>
+          <Link href="/contact" className="block  py-2 text-gray-700 hover:text-[#656974FF]">Contact Us</Link>
         </div>
 
         <div style={{ gap: '10px', fontSize: '24px' }} className="sm:hidden mx-1 mt-6 flex items-center">

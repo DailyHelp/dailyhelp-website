@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – DailyHelp</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #111;
+      background: #fff;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2ec16a;
+    }
+
+    .nav-links a.active {
+      color: #2ec16a;
+      font-weight: 600;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .contact-section h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .contact-section p {
+      color: #555;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 32px 36px 28px;
+      text-align: left;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d8d8d8;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #333;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+      resize: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #bbb;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #2ec16a;
+    }
+
+    .field textarea {
+      height: 120px;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #2ec16a;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background: #25a85a;
+    }
+
+    /* ── APP DOWNLOAD SECTION ── */
+    .app-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 60px 40px 80px;
+      background: #fff;
+      flex-wrap: wrap;
+    }
+
+    .phone-mockup {
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    .phone-mockup img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Placeholder phone mockup (SVG) */
+    .phone-placeholder {
+      width: 240px;
+      height: 440px;
+      background: #111;
+      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      flex-shrink: 0;
+    }
+
+    .phone-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+    }
+
+    .phone-screen {
+      position: absolute;
+      inset: 18px 4px 4px;
+      border-radius: 28px;
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      gap: 12px;
+    }
+
+    .phone-tagline {
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .phone-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .phone-btn {
+      background: #2ec16a;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      width: 90px;
+    }
+
+    .phone-btn-icon {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .app-info {
+      max-width: 300px;
+    }
+
+    .app-logo-wrap {
+      width: 64px;
+      height: 64px;
+      border: 1px solid #e5e5e5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .app-info h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .app-info p {
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .store-icons {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .store-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .qr-code {
+      width: 90px;
+      height: 90px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 4px;
+      background: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #eee;
+      padding: 28px 40px 16px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .social-link {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover { color: #2ec16a; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #2ec16a; }
+
+    .footer-bottom {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom span, .footer-bottom a {
+      font-size: 0.78rem;
+      color: #888;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover { color: #2ec16a; }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .contact-card { padding: 24px 18px; }
+      .app-section { gap: 40px; padding: 40px 20px 60px; }
+      footer { padding: 20px; }
+      .footer-links { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo" aria-label="DailyHelp home">
+      <svg class="logo-icon" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="19" r="19" fill="#2ec16a"/>
+        <circle cx="19" cy="14" r="7" fill="#fff" opacity="0.25"/>
+        <circle cx="14" cy="12" r="2.5" fill="#fff"/>
+        <circle cx="24" cy="12" r="2.5" fill="#fff"/>
+        <circle cx="14" cy="12" r="1.2" fill="#111"/>
+        <circle cx="24" cy="12" r="1.2" fill="#111"/>
+        <path d="M13 17 Q19 22 25 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <rect x="10" y="22" width="18" height="10" rx="5" fill="#fff" opacity="0.2"/>
+        <rect x="13" y="24" width="5" height="6" rx="2.5" fill="#fff"/>
+        <rect x="20" y="24" width="5" height="6" rx="2.5" fill="#fff"/>
+      </svg>
+      <span class="logo-text">dailyhelp</span>
+    </a>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">How It Works</a>
+      <a href="#">Founders Corner</a>
+      <a href="contact-us.html" class="active">Contact Us</a>
+    </div>
+
+    <div class="hamburger" role="button" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- CONTACT FORM -->
+  <section class="contact-section">
+    <h1>Contact Us</h1>
+    <p>Leave us a message...</p>
+
+    <div class="contact-card">
+      <form id="contactForm" novalidate>
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="e.g. Jane Doe" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="e.g. Janedoe@example.com" autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Enter your message..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- APP DOWNLOAD -->
+  <section class="app-section">
+
+    <!-- Phone Mockup -->
+    <div class="phone-placeholder" aria-hidden="true">
+      <div class="phone-screen">
+        <p class="phone-tagline">Your Go-To Platform<br>for Everyday Services.</p>
+        <div class="phone-buttons">
+          <div class="phone-btn">
+            <div class="phone-btn-icon">🔍</div>
+            I Need a Service<br><small>Hire skilled pros near you</small>
+          </div>
+          <div class="phone-btn">
+            <div class="phone-btn-icon">👤</div>
+            I Offer a Service<br><small>Find clients near you</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="app-info">
+      <div class="app-logo-wrap" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="19" cy="19" r="19" fill="#2ec16a"/>
+          <circle cx="14" cy="12" r="2.5" fill="#fff"/>
+          <circle cx="24" cy="12" r="2.5" fill="#fff"/>
+          <circle cx="14" cy="12" r="1.2" fill="#111"/>
+          <circle cx="24" cy="12" r="1.2" fill="#111"/>
+          <path d="M13 17 Q19 22 25 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <rect x="13" y="24" width="5" height="6" rx="2.5" fill="#fff"/>
+          <rect x="20" y="24" width="5" height="6" rx="2.5" fill="#fff"/>
+        </svg>
+      </div>
+
+      <h2>Get trusted help near you in minutes</h2>
+      <p>Scan the QR code to download the DailyHelp app</p>
+
+      <div class="store-icons">
+        <!-- Google Play -->
+        <svg class="store-icon" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 2.5 L16 14 L3 25.5 Q2 25 2 24V4Q2 3 3 2.5Z" fill="#00D4AA"/>
+          <path d="M16 14 L3 2.5 L20 10Z" fill="#FFD700"/>
+          <path d="M16 14 L20 18 L3 25.5Z" fill="#FF5252"/>
+          <path d="M20 10 L16 14 L20 18 L24 15Q25 14 24 13Z" fill="#FF9800"/>
+        </svg>
+        <!-- Apple -->
+        <svg class="store-icon" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 4C17 5 16 7 16.5 9 18.5 9 20 7.5 20 6 20 5 19 4 18 4Z" fill="#555"/>
+          <path d="M21 11C19 10 17 10 16 11 14 12 13 14 13 17 13 20 14.5 24 17 25 18 25.5 19 25 20 24 20.5 23.5 21.5 23.5 22 24 23 25 24 25.5 25 25 27.5 24 29 20 29 17 29 14 28 12 26 11 24 10.5 22 11Z" fill="#555"/>
+        </svg>
+      </div>
+
+      <!-- QR Code (generated via SVG pattern) -->
+      <svg class="qr-code" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" aria-label="QR code to download app">
+        <!-- Finder top-left -->
+        <rect x="5" y="5" width="24" height="24" rx="3" fill="#000"/>
+        <rect x="9" y="9" width="16" height="16" rx="1" fill="#fff"/>
+        <rect x="13" y="13" width="8" height="8" fill="#000"/>
+        <!-- Finder top-right -->
+        <rect x="61" y="5" width="24" height="24" rx="3" fill="#000"/>
+        <rect x="65" y="9" width="16" height="16" rx="1" fill="#fff"/>
+        <rect x="69" y="13" width="8" height="8" fill="#000"/>
+        <!-- Finder bottom-left -->
+        <rect x="5" y="61" width="24" height="24" rx="3" fill="#000"/>
+        <rect x="9" y="65" width="16" height="16" rx="1" fill="#fff"/>
+        <rect x="13" y="69" width="8" height="8" fill="#000"/>
+        <!-- Data modules (decorative) -->
+        <rect x="33" y="5" width="4" height="4" fill="#000"/><rect x="41" y="5" width="4" height="4" fill="#000"/>
+        <rect x="49" y="5" width="4" height="4" fill="#000"/><rect x="33" y="13" width="4" height="4" fill="#000"/>
+        <rect x="41" y="13" width="4" height="4" fill="#000"/><rect x="49" y="13" width="4" height="4" fill="#000"/>
+        <rect x="33" y="21" width="4" height="4" fill="#000"/><rect x="49" y="21" width="4" height="4" fill="#000"/>
+        <rect x="5" y="33" width="4" height="4" fill="#000"/><rect x="13" y="33" width="4" height="4" fill="#000"/>
+        <rect x="21" y="33" width="4" height="4" fill="#000"/><rect x="29" y="33" width="4" height="4" fill="#000"/>
+        <rect x="37" y="33" width="4" height="4" fill="#000"/><rect x="45" y="33" width="4" height="4" fill="#000"/>
+        <rect x="53" y="33" width="4" height="4" fill="#000"/><rect x="61" y="33" width="4" height="4" fill="#000"/>
+        <rect x="69" y="33" width="4" height="4" fill="#000"/><rect x="77" y="33" width="8" height="4" fill="#000"/>
+        <rect x="5" y="41" width="4" height="4" fill="#000"/><rect x="13" y="41" width="8" height="4" fill="#000"/>
+        <rect x="25" y="41" width="4" height="4" fill="#000"/><rect x="33" y="41" width="8" height="4" fill="#000"/>
+        <rect x="45" y="41" width="4" height="4" fill="#000"/><rect x="53" y="41" width="8" height="4" fill="#000"/>
+        <rect x="65" y="41" width="4" height="4" fill="#000"/><rect x="73" y="41" width="4" height="4" fill="#000"/>
+        <rect x="5" y="49" width="8" height="4" fill="#000"/><rect x="17" y="49" width="4" height="4" fill="#000"/>
+        <rect x="25" y="49" width="8" height="4" fill="#000"/><rect x="37" y="49" width="4" height="4" fill="#000"/>
+        <rect x="45" y="49" width="8" height="4" fill="#000"/><rect x="57" y="49" width="4" height="4" fill="#000"/>
+        <rect x="65" y="49" width="4" height="4" fill="#000"/><rect x="73" y="49" width="12" height="4" fill="#000"/>
+        <rect x="33" y="57" width="4" height="4" fill="#000"/><rect x="41" y="57" width="8" height="4" fill="#000"/>
+        <rect x="53" y="57" width="4" height="4" fill="#000"/><rect x="61" y="57" width="4" height="4" fill="#000"/>
+        <rect x="69" y="57" width="4" height="4" fill="#000"/><rect x="77" y="57" width="8" height="4" fill="#000"/>
+        <rect x="33" y="65" width="8" height="4" fill="#000"/><rect x="45" y="65" width="4" height="4" fill="#000"/>
+        <rect x="53" y="65" width="8" height="4" fill="#000"/><rect x="65" y="65" width="4" height="4" fill="#000"/>
+        <rect x="73" y="65" width="4" height="4" fill="#000"/>
+        <rect x="33" y="73" width="4" height="4" fill="#000"/><rect x="41" y="73" width="4" height="4" fill="#000"/>
+        <rect x="49" y="73" width="8" height="4" fill="#000"/><rect x="61" y="73" width="8" height="4" fill="#000"/>
+        <rect x="73" y="73" width="12" height="4" fill="#000"/>
+        <rect x="33" y="81" width="8" height="4" fill="#000"/><rect x="45" y="81" width="4" height="4" fill="#000"/>
+        <rect x="53" y="81" width="4" height="4" fill="#000"/><rect x="61" y="81" width="4" height="4" fill="#000"/>
+        <rect x="69" y="81" width="4" height="4" fill="#000"/><rect x="77" y="81" width="8" height="4" fill="#000"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <a href="#" class="logo" aria-label="DailyHelp home">
+        <svg class="logo-icon" width="32" height="32" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="19" cy="19" r="19" fill="#2ec16a"/>
+          <circle cx="14" cy="12" r="2.5" fill="#fff"/>
+          <circle cx="24" cy="12" r="2.5" fill="#fff"/>
+          <circle cx="14" cy="12" r="1.2" fill="#111"/>
+          <circle cx="24" cy="12" r="1.2" fill="#111"/>
+          <path d="M13 17 Q19 22 25 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <rect x="13" y="24" width="5" height="6" rx="2.5" fill="#fff"/>
+          <rect x="20" y="24" width="5" height="6" rx="2.5" fill="#fff"/>
+        </svg>
+        <span class="logo-text">dailyhelp</span>
+      </a>
+
+      <div class="footer-social">
+        <!-- Instagram -->
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/>
+          </svg>
+        </a>
+        <!-- X / Twitter -->
+        <a href="#" class="social-link" aria-label="X (Twitter)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">How DailyHelp works</a>
+      <a href="#">Founders Corner</a>
+      <a href="#">Business Ethics &amp; Compliance Guide</a>
+      <a href="#">FAQ et Contacts</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 DailyHelp</span>
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of use</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in all fields before submitting.');
+        return;
+      }
+
+      const btn = this.querySelector('.btn-submit');
+      btn.textContent = 'Message sent ✓';
+      btn.style.background = '#25a85a';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = 'Submit';
+        btn.style.background = '';
+        btn.disabled = false;
+        this.reset();
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>

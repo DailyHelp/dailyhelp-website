@@ -32,7 +32,8 @@ const Header: React.FC = () => {
           <Link href="/how-it-works" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">How DailyHelp Works</Link>
           <Link href="/founders-corners" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Founders Corner</Link>
           <Link href="/ethics-guide" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Business Ethics & Compliance Guide</Link>
-          <Link href="/faqs" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQ et Contacts</Link>
+          <Link href="/faqs" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQs</Link>
+          <Link href="/contact" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact Us</Link>
         </Dropdown>
       </div>
     </div>
