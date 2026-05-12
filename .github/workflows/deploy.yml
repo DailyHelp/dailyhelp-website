@@ -10,7 +10,6 @@ env:
   NODE_VERSION: 20
   APP_DIR: /var/www/dailyhelp
   APP_NAME: dailyhelp
-  ARCHIVE_NAME: dailyhelp-${{ github.sha }}.tgz
   RELEASE_NAME: release-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
 
 jobs:
@@ -47,20 +46,37 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: npm
 
-      - name: Create deploy bundle
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Set up SSH
         run: |
-          git archive --format=tar HEAD | gzip > "${ARCHIVE_NAME}"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT || 22 }} "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Upload bundle to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT || '22' }}
-          source: "${{ env.ARCHIVE_NAME }}"
-          target: "/tmp"
+      - name: Prepare release directory on server
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            -p ${{ secrets.SSH_PORT || 22 }} \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "mkdir -p ${{ env.APP_DIR }}/releases/${{ env.RELEASE_NAME }} ${{ env.APP_DIR }}/shared"
+
+      - name: Rsync build to server
+        run: |
+          rsync -az --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT || 22 }}" \
+            ./ \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ env.APP_DIR }}/releases/${{ env.RELEASE_NAME }}/"
 
       - name: Deploy on server
         uses: appleboy/ssh-action@v1.2.0
@@ -76,22 +92,13 @@ jobs:
             RELEASES_DIR="${APP_DIR}/releases"
             SHARED_DIR="${APP_DIR}/shared"
             RELEASE="${RELEASES_DIR}/${{ env.RELEASE_NAME }}"
-            ARCHIVE="/tmp/${{ env.ARCHIVE_NAME }}"
-
-            mkdir -p "${RELEASES_DIR}" "${SHARED_DIR}"
-            mkdir -p "${RELEASE}"
-
-            tar xzf "${ARCHIVE}" -C "${RELEASE}"
-            rm -f "${ARCHIVE}"
 
             if [ -f "${SHARED_DIR}/.env" ]; then
               ln -sfn "${SHARED_DIR}/.env" "${RELEASE}/.env"
             fi
 
             cd "${RELEASE}"
-            export npm_config_production=false
-            npm ci --include=dev
-            npm run build
+            npm ci --omit=dev
 
             ln -sfn "${RELEASE}" "${APP_DIR}/current"
 
