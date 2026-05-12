@@ -88,6 +88,7 @@ jobs:
           script: |
             set -euo pipefail
 
+            APP_NAME="${{ env.APP_NAME }}"
             APP_DIR="${{ env.APP_DIR }}"
             RELEASES_DIR="${APP_DIR}/releases"
             SHARED_DIR="${APP_DIR}/shared"
@@ -103,7 +104,11 @@ jobs:
             ln -sfn "${RELEASE}" "${APP_DIR}/current"
 
             cd "${APP_DIR}/current"
-            pm2 startOrReload ecosystem.config.js --env production
+
+            # Delete the existing PM2 process so the new one picks up the latest
+            # release directory as its execution cwd.
+            pm2 delete "${APP_NAME}" 2>/dev/null || true
+            pm2 start ecosystem.config.js --env production --only "${APP_NAME}"
             pm2 save --force
 
             CURRENT="$(readlink -f "${APP_DIR}/current" || true)"
